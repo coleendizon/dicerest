@@ -11,7 +11,7 @@ import java.sql.Connection;
 
 public abstract class DBConnectionFactory {
     private String driverName = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3306/country?autoReconnect=true&useSSL=false";
+    private String url = "jdbc:mysql://localhost:3306/random_number?autoReconnect=true&useSSL=false";
     private String username = "root";
     private String password = "password123!";
     
