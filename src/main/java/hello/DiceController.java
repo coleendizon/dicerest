@@ -9,19 +9,21 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin
 @RestController
 public class DiceController {
 	 @RequestMapping(value = "/randomnumber", method = RequestMethod.GET)
 	 public List<Dice> randomnum(){ 
-		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		 DBConnectionFactory myFactory = DBConnectionFactory.getInstance();
-		 Connection conn = myFactory.getConnection();
-		 PreparedStatement ps = null;
-		 String query = "";
+		 //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 //DBConnectionFactory myFactory = DBConnectionFactory.getInstance();
+		 //Connection conn = myFactory.getConnection();
+		 //PreparedStatement ps = null;
+		 //String query = "";
 		 
 		 List <Dice> dicelist = new ArrayList<Dice>();
 		 Random rand = new Random();
@@ -31,6 +33,7 @@ public class DiceController {
 			  dice.setDice(rand.nextInt(6)+1);
 			  dicelist.add(dice);
 		 }
+		 /*
 		 try { 
 		  Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		  
@@ -45,7 +48,7 @@ public class DiceController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		  
+		  */
 		 return dicelist;
 		 
 	 
