@@ -1,7 +1,10 @@
 package hello;
 
 import java.util.Random;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -19,11 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class DiceController {
 	 @RequestMapping(value = "/randomnumber", method = RequestMethod.GET)
 	 public List<Dice> randomnum(){ 
-		 //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		 //DBConnectionFactory myFactory = DBConnectionFactory.getInstance();
-		 //Connection conn = myFactory.getConnection();
-		 //PreparedStatement ps = null;
-		 //String query = "";
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 DBConnectionFactory myFactory = DBConnectionFactory.getInstance();
+		 Connection conn = myFactory.getConnection();
 		 
 		 List <Dice> dicelist = new ArrayList<Dice>();
 		 Random rand = new Random();
@@ -33,7 +34,11 @@ public class DiceController {
 			  dice.setDice(rand.nextInt(6)+1);
 			  dicelist.add(dice);
 		 }
-		 /*
+		 
+		 if (conn!=null) {
+		 PreparedStatement ps = null;
+		 String query = "";
+		 
 		 try { 
 		  Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		  
@@ -48,7 +53,7 @@ public class DiceController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		  */
+		 }
 		 return dicelist;
 		 
 	 
